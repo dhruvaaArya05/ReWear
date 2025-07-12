@@ -10,6 +10,6 @@
 > The goal is to promote **sustainable fashion** and **reduce textile waste** by encouraging users to reuse wearable garments instead of discarding them.
 
 ## Team Members - Team ZeroAmbiguity
-> Dhruva Keshav Arya - Team Lead - dhruvaa866@gmail.com
-> Ishika Bansal - ishikabansal1511@gmail.com
+> Dhruva Keshav Arya - Team Lead - dhruvaa866@gmail.com<br/>
+> Ishika Bansal - ishikabansal1511@gmail.com<br/>
 > Gagandeep Singh Choudhary - gchoudhary16555@gmail.com
