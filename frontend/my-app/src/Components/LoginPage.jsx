@@ -1,0 +1,132 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
+const LoginPage = () => {
+
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [isLoggedIn, setInLoggedIn] = useState(false);
+
+  const navigate = useNavigate();
+
+  async function handleLoginSubmit(e) {
+    e.preventDefault();
+    const response = await fetch('http://localhost:3000/auth/login', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+    if (data.message === "Invalid User") {
+      alert("Please signup first");
+    } else if (data.message === "Invalid email or password") {
+      alert("Please check your email or password");
+    } else if (data.message === "Login successful") {
+      setInLoggedIn(true);
+      navigate("/landing-page");//changes naviagte to landing page after login
+    }
+
+  }
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-indigo-400 to-purple-600 flex items-center justify-center p-4">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-xl p-8 animate-slideUp">
+        {/* Header */}
+        <div className="text-center mb-8">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="text-blue-500">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="3" width="7" height="7" rx="1" fill="currentColor" />
+                <rect x="14" y="3" width="7" height="7" rx="1" fill="currentColor" />
+                <rect x="14" y="14" width="7" height="7" rx="1" fill="currentColor" />
+                <rect x="3" y="14" width="7" height="7" rx="1" fill="currentColor" />
+              </svg>
+            </div>
+            <span className="text-xl font-bold text-blue-500">SpendLens</span>
+          </div>
+          <h1 className="text-3xl font-extrabold text-gray-800 mb-1">Welcome back</h1>
+          <p className="text-sm text-gray-500">Sign in to your account to continue managing your finances</p>
+        </div>
+
+        {/* Login Form */}
+        <form className="space-y-6" onSubmit={handleLoginSubmit}>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+              Email address
+            </label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
+            <div className="relative">
+              <input
+                id="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 pr-10"
+                placeholder="Enter your password"
+                required
+              />
+              <button
+                type="button"
+                className="absolute right-2 top-2.5 text-gray-500 hover:text-gray-700"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8S1 12 1 12z" strokeWidth="2" />
+                  <circle cx="12" cy="12" r="3" strokeWidth="2" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between text-sm">
+            <label className="flex items-center gap-2">
+              <input type="checkbox" className="form-checkbox text-blue-600" />
+              <span className="text-gray-700">Remember me</span>
+            </label>
+            <a href="#" className="text-blue-500 hover:underline font-medium">
+              Forgot password?
+            </a>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md shadow transition-all"
+          >
+            Sign in
+          </button>
+        </form>
+
+        {/* Sign up */}
+        <div className="mt-6 text-center text-sm text-gray-600">
+          Don't have an account?{" "}
+          <button
+            onClick={() => navigate("/signup")}
+            className="text-blue-500 hover:underline font-medium"
+          >
+            Sign up
+          </button>
+        </div>
+      </div>
+    </div>
+
+  );
+}
+
+export default LoginPage;
