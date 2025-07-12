@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
 
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [role, setRole] = useState("user");
   const [isLoggedIn, setInLoggedIn] = useState(false);
 

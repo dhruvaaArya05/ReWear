@@ -25,13 +25,17 @@ app.use(session({
   cookie: {
     secure: false,
     httpOnly: true,
-    maxAge: 1000 * 60 * 60 * 24, // 1 day
+    maxAge: 1000 * 60 * 60 * 24,
+    sameSite: 'lax'  // Add this
   }
 }));
 
+// Move CORS before routes
 app.use(cors({
   credentials: true,
-  origin: "http://localhost:5173"
+  origin: "http://localhost:5173",
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type']
 }));
 
 app.use(authRouter);

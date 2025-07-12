@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+/* carousel-fix.css */
+
+.slick-slide>div {
+  display: flex !important;
+  justify-content: center;
+}

@@ -2,7 +2,7 @@ const User = require('../models/User'); // <-- Add this line
 
 exports.getUserInfo = async (req, res) => {
   try {
-    const userId = req.session.userId;
+    const userId = req.userId;
     if (!userId) return res.status(401).json({ error: 'Unauthorized' });
 
     const user = await User.findById(userId).select('-password');

@@ -50,7 +50,7 @@ exports.getFeaturedItems = async (req, res) => {
 
 exports.getUserItems = async (req, res) => {
   try {
-    const items = await Item.find({ userId: req.session.userId });
+    const items = await Item.find({ userId: req.userId }); // FIX: use req.userId
     res.json(items);
   } catch (err) {
     res.status(500).json({ error: err.message });
