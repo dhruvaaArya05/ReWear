@@ -5,6 +5,7 @@ exports.addItem = async (req, res) => {
     const item = new Item({
       ...req.body,
       uploader: req.userId,
+      userId: req.userId, // <-- Add this line
     });
     const savedItem = await item.save();
     res.status(201).json(savedItem);
@@ -37,4 +38,46 @@ exports.updateItemStatus = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.getFeaturedItems = async (req, res) => {
+  try {
+    const items = await Item.find({ status: 'approved' }).lean();
+    res.json(items);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+exports.getUserItems = async (req, res) => {
+  try {
+    const items = await Item.find({ userId: req.session.userId });
+    res.json(items);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+// exports.getItemById = async (req, res) => {
+//   try {
+//     const item = await Item.findById(req.params.id).populate('userId', 'email');
+//     if (!item) return res.status(404).json({ message: 'Item not found' });
+//     res.json(item);
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   }
+// };
+
+exports.getItemById = async (req, res) => {
+  try {
+    const item = await Item.findById(req.params.id).populate('userId', 'email');
+    if (!item) return res.status(404).json({ message: 'Item not found' });
+    res.json(item);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
+
+
+
 

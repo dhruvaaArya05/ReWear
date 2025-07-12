@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function AddItem() {
   const [form, setForm] = useState({
     title: '', description: '', category: '',
     type: '', size: '', condition: '', tags: '', image: ''
   });
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -51,6 +54,9 @@ function AddItem() {
           title: '', description: '', category: '',
           type: '', size: '', condition: '', tags: '', image: ''
         });
+
+        navigate('/landing-page');
+
       } else {
         alert(data.message || 'Something went wrong');
       }

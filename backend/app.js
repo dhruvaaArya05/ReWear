@@ -8,6 +8,7 @@ const cors = require('cors');
 
 const authRouter = require('./routers/authRouter');
 const itemRouter = require('./routers/itemRouter');
+const router = require('./routers/userRouter');
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use(cors({
 
 app.use(authRouter);
 app.use(itemRouter);
+app.use(router);
 
 const PORT = 3000;
 const DB_PATH = "mongodb+srv://dhruvaa866:dhruvaadbroot%4005@completecoding.z7yhero.mongodb.net/rewear?retryWrites=true&w=majority&appName=CompleteCoding";
