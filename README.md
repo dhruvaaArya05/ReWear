@@ -1,7 +1,7 @@
 <h1 align="center">👕 ReWear – Community Clothing Exchange ♻️</h1>
 <p align="center">
   <i>A sustainable platform to swap, redeem, and rewear unused clothing.</i><br/>
-  <b>Built for the Agentic AI Hackathon 2025</b>
+  <b>Built for the Odoo Hackathon 2025</b>
 </p>
 
 ## 🧠 Problem Statement
