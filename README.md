@@ -14,6 +14,16 @@
 > Ishika Bansal - ishikabansal1511@gmail.com<br/>
 > Gagandeep Singh Choudhary - gchoudhary16555@gmail.com
 
+---
+Preview of ReWear :
+<img width="1600" height="835" alt="image" src="https://github.com/user-attachments/assets/2743ddfd-4c95-4d7e-88d0-9883abea0bb7" />
+<img width="1367" height="866" alt="image" src="https://github.com/user-attachments/assets/c1d7676d-3256-494e-af68-3e77c79917e7" />
+<img width="924" height="766" alt="image" src="https://github.com/user-attachments/assets/7ad44df4-2a1e-44e0-8a4e-18b8c1af10fb" />
+<img width="1600" height="813" alt="image" src="https://github.com/user-attachments/assets/5c4d348f-049c-4e4a-a428-25b4906135be" />
+<img width="1600" height="787" alt="image" src="https://github.com/user-attachments/assets/afa38899-2dc4-4f1d-bf37-bb4466001d23" />
+
+
+
 
 ---
 
@@ -78,20 +88,14 @@ To get a local copy up and running, follow these simple steps.
 
 1.  **Clone the repo:**
     ```sh
-    git clone [https://github.com/your-username/rewear.git](https://github.com/your-username/rewear.git)
+    git clone https://github.com/dhruvaaArya05/ReWear
     ```
 2.  **Navigate to the project directory:**
     ```sh
-    cd rewear
-    ```
-3.  **Install NPM packages:**
-    ```sh
+    cd backend
     npm install
-    ```
-4.  **Start the development server:**
-    ```sh
     npm start
-    ```
+   
 
 The application should now be running on `http://localhost:3000`.
 
